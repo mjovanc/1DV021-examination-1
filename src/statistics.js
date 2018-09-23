@@ -21,7 +21,6 @@ function descriptiveStatistics (numbers) {
     // TODO: Write your code here.
 }
 
-
 /**
  * Returns boolean value true if array contains other data types than Number in it.
  *
@@ -64,10 +63,42 @@ function maximum(numbers) {
     return newArr[newArr.length-1]
 }
 
+
+/**
+ * Returns the mean value of the array.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number}
+ */
+function mean(numbers) {
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+
+    let newArr = [...numbers]
+    let total = 0
+
+    for (let i = 0; i < newArr.length; i++) {
+        total += newArr[i]
+    }
+
+    let sum = total / newArr.length
+    
+    return sum
+}
+
+
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
-exports.mean = undefined
+exports.mean = mean
 exports.median = undefined
 exports.minimum = undefined
 exports.mode = undefined
