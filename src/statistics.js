@@ -18,7 +18,16 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-    // TODO: Write your code here.
+    let stats = {
+        maximum: maximum(numbers),
+        mean: mean(numbers),
+        median: median(numbers),
+        minimum: minimum(numbers),
+        mode: mode(numbers),
+        range: range(numbers),
+        standardDeviation: standardDeviation(numbers),
+    }
+    return stats
 }
 
 /**
@@ -160,6 +169,10 @@ function minimum(numbers) {
     return newArr[0]
 }
 
+function mode(numbers) {
+    return true
+}
+
 
 /**
  * Returns the range value of the array. Subtracts the maximum with the minimum.
@@ -220,6 +233,6 @@ exports.maximum = maximum
 exports.mean = mean
 exports.median = median
 exports.minimum = minimum
-exports.mode = undefined
+exports.mode = mode
 exports.range = range
 exports.standardDeviation = standardDeviation
