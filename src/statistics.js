@@ -1,7 +1,7 @@
 /**
  * Module for obtaining descriptive information about a set of data.
  *
- * @author TODO: Write your name here.
+ * @author Marcus Cvjeticanin
  * @version 1.1.0
  */
 
@@ -21,11 +21,52 @@ function descriptiveStatistics (numbers) {
     // TODO: Write your code here.
 }
 
-// TODO: Write your code here.
+
+/**
+ * Returns boolean value true if array contains other data types than Number in it.
+ *
+ * @param {number[]} numbers The array to check 
+ * @returns {boolean} 
+ */
+function containsOtherElements(numbers) {
+    let newArr = [...numbers]
+    
+    for (let i = 0; i < newArr.length; i++) {
+        if (typeof newArr[i] != 'number') {
+            return true
+        }
+    }
+    return false
+}
+
+
+/**
+ * Returns the maximum number of the array.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number}
+ */
+function maximum(numbers) {
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherElements(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+
+    let newArr = [...numbers]
+    newArr.sort((a, b) => a - b)
+
+    return newArr[newArr.length-1]
+}
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
-exports.maximum = undefined
+exports.maximum = maximum
 exports.mean = undefined
 exports.median = undefined
 exports.minimum = undefined
