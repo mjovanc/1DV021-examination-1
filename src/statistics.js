@@ -28,7 +28,7 @@ function descriptiveStatistics (numbers) {
  * @param {number[]} numbers The array to check 
  * @returns {boolean} 
  */
-function containsOtherElements(numbers) {
+function containsOtherDataTypes(numbers) {
     let newArr = [...numbers]
     
     for (let i = 0; i < newArr.length; i++) {
@@ -54,7 +54,7 @@ function maximum(numbers) {
         throw new TypeError('The passed argument is not an array.')
     } else if (numbers.length < 1) {
         throw new Error('The passed array contains no elements.')
-    } else if (containsOtherElements(numbers)) {
+    } else if (containsOtherDataTypes(numbers)) {
         throw new TypeError('The passed array contains not just numbers.')
     }
 
