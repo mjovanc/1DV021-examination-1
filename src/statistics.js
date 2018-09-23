@@ -185,6 +185,35 @@ function range(numbers) {
 }
 
 
+/**
+ * Returns the standard deviation value of the array.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number}
+ */
+function standardDeviation(numbers) {
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+    
+    let newArr = [...numbers]
+    let total = 0
+
+    for (let i = 0; i < newArr.length; i++) {
+        total += Math.pow(newArr[i] - mean(newArr), 2)
+    }
+
+    return Math.sqrt(total / newArr.length)
+}
+
+
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
@@ -193,4 +222,4 @@ exports.median = median
 exports.minimum = minimum
 exports.mode = undefined
 exports.range = range
-exports.standardDeviation = undefined
+exports.standardDeviation = standardDeviation
