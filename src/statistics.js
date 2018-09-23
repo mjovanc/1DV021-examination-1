@@ -161,6 +161,30 @@ function minimum(numbers) {
 }
 
 
+/**
+ * Returns the range value of the array. Subtracts the maximum with the minimum.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number}
+ */
+function range(numbers) {
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+
+    let newArr = [...numbers]
+
+    return maximum(newArr) - minimum(newArr)
+}
+
+
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
@@ -168,5 +192,5 @@ exports.mean = mean
 exports.median = median
 exports.minimum = minimum
 exports.mode = undefined
-exports.range = undefined
+exports.range = range
 exports.standardDeviation = undefined
