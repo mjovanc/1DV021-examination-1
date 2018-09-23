@@ -136,12 +136,37 @@ function median(numbers) {
 }
 
 
+/**
+ * Returns the minimum value of the array.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number}
+ */
+function minimum(numbers) {
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+
+    let newArr = [...numbers]
+    newArr.sort((a, b) => a - b)
+
+    return newArr[0]
+}
+
+
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
 exports.mean = mean
 exports.median = median
-exports.minimum = undefined
+exports.minimum = minimum
 exports.mode = undefined
 exports.range = undefined
 exports.standardDeviation = undefined
