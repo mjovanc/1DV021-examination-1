@@ -169,8 +169,45 @@ function minimum(numbers) {
     return newArr[0]
 }
 
+
 function mode(numbers) {
-    return true
+    if (!Array.isArray(numbers)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (numbers.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(numbers)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+
+    let newArr = [...numbers]
+    let arrObj = []
+
+    for (let i = 0; i < newArr.length; i++) {
+        let count = 0
+
+        for (let d = 0; d < newArr.length; d++) {
+            if (newArr[d] === newArr[i]) {
+                count++
+            }
+        }
+        arrObj.push({n: newArr[i], c: count})
+    }
+
+    arrObj.sort((a, b) => a.c - b.c)
+    arrObj.reverse()
+
+    let largestCount = arrObj[0].c
+    let results = []
+
+    for (let i = 0; i < arrObj.length; i++) {
+        if (largestCount === arrObj[i].c) {
+            if (!results.includes(arrObj[i].n)) {
+                results.push(arrObj[i].n)
+            }
+        }
+    }
+    
+    return results
 }
 
 
