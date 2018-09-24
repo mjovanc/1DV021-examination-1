@@ -97,10 +97,8 @@ function mean(numbers) {
     for (let i = 0; i < newArr.length; i++) {
         total += newArr[i]
     }
-
-    let sum = total / newArr.length
     
-    return sum
+    return total / newArr.length
 }
 
 
@@ -170,6 +168,15 @@ function minimum(numbers) {
 }
 
 
+/**
+ * Returns the mode value(s) of the array.
+ *
+ * @param {number[]} numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {Array<Number>} Array of results for the mode values.
+ */
 function mode(numbers) {
     if (!Array.isArray(numbers)) {
         throw new TypeError('The passed argument is not an array.')
@@ -207,7 +214,7 @@ function mode(numbers) {
         }
     }
     
-    return results
+    return results.sort((a, b) => a - b)
 }
 
 
