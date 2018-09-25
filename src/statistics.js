@@ -7,10 +7,6 @@
 
 'use strict'
 
-const argNotArray = 'The passed argument is not an array.'
-const noElementsInArray = 'The passed array contains no elements.'
-const containsNotJustNumbers = 'The passed array contains not just numbers.'
-
 /**
  * Returns the descriptive information (maximum, mean, median, minimum,
  * mode, range and standard deviation) from a set of numbers.
@@ -53,6 +49,25 @@ function containsOtherDataTypes(numbers) {
 
 
 /**
+ * Throws Error/TypeError when one of the statements is not true.
+ *
+ * @param {number[]} array The set of data to be analyzed.
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ */
+function checkArray(array) {
+    if (!Array.isArray(array)) {
+        throw new TypeError('The passed argument is not an array.')
+    } else if (array.length < 1) {
+        throw new Error('The passed array contains no elements.')
+    } else if (containsOtherDataTypes(array)) {
+        throw new TypeError('The passed array contains not just numbers.')
+    }
+}
+
+
+/**
  * Returns the maximum number of the array.
  *
  * @param {number[]} numbers
@@ -62,13 +77,7 @@ function containsOtherDataTypes(numbers) {
  * @returns {number}
  */
 function maximum(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
     newArr.sort((a, b) => a - b)
@@ -87,13 +96,7 @@ function maximum(numbers) {
  * @returns {number}
  */
 function mean(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
     let total = 0
@@ -116,13 +119,7 @@ function mean(numbers) {
  * @returns {number}
  */
 function median(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
     newArr.sort((a, b) => a - b)
@@ -157,13 +154,7 @@ function median(numbers) {
  * @returns {number}
  */
 function minimum(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
     newArr.sort((a, b) => a - b)
@@ -182,13 +173,7 @@ function minimum(numbers) {
  * @returns {Array<Number>} Array of results for the mode values.
  */
 function mode(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
     let arrObj = []
@@ -232,13 +217,7 @@ function mode(numbers) {
  * @returns {number}
  */
 function range(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
 
     let newArr = [...numbers]
 
@@ -256,13 +235,7 @@ function range(numbers) {
  * @returns {number}
  */
 function standardDeviation(numbers) {
-    if (!Array.isArray(numbers)) {
-        throw new TypeError(argNotArray)
-    } else if (numbers.length < 1) {
-        throw new Error(noElementsInArray)
-    } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError(containsNotJustNumbers)
-    }
+    checkArray(numbers)
     
     let newArr = [...numbers]
     let total = 0
