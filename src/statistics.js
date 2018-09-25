@@ -7,6 +7,10 @@
 
 'use strict'
 
+const argNotArray = 'The passed argument is not an array.'
+const noElementsInArray = 'The passed array contains no elements.'
+const containsNotJustNumbers = 'The passed array contains not just numbers.'
+
 /**
  * Returns the descriptive information (maximum, mean, median, minimum,
  * mode, range and standard deviation) from a set of numbers.
@@ -59,11 +63,11 @@ function containsOtherDataTypes(numbers) {
  */
 function maximum(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -84,11 +88,11 @@ function maximum(numbers) {
  */
 function mean(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -113,11 +117,11 @@ function mean(numbers) {
  */
 function median(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -154,11 +158,11 @@ function median(numbers) {
  */
 function minimum(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -179,11 +183,11 @@ function minimum(numbers) {
  */
 function mode(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -229,11 +233,11 @@ function mode(numbers) {
  */
 function range(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
 
     let newArr = [...numbers]
@@ -253,11 +257,11 @@ function range(numbers) {
  */
 function standardDeviation(numbers) {
     if (!Array.isArray(numbers)) {
-        throw new TypeError('The passed argument is not an array.')
+        throw new TypeError(argNotArray)
     } else if (numbers.length < 1) {
-        throw new Error('The passed array contains no elements.')
+        throw new Error(noElementsInArray)
     } else if (containsOtherDataTypes(numbers)) {
-        throw new TypeError('The passed array contains not just numbers.')
+        throw new TypeError(containsNotJustNumbers)
     }
     
     let newArr = [...numbers]
