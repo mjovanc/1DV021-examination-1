@@ -77,11 +77,13 @@ function checkArray(array) {
  * @returns {number}
  */
 function maximum(numbers) {
+    // Call checkArray() with the argument numbers to do the check
     checkArray(numbers)
 
     let newArr = [...numbers]
     newArr.sort((a, b) => a - b)
 
+    // Returning the last value on the index, subtracts with -1 to match index
     return newArr[newArr.length-1]
 }
 
@@ -124,21 +126,30 @@ function median(numbers) {
     let newArr = [...numbers]
     newArr.sort((a, b) => a - b)
 
+    // Check if the array is even or odd
     if (newArr.length % 2 === 0) {
         for (let i = 0; i < newArr.length; i++) {
+
+            // If the array length is more than two, then it needs to remove the last and first element again to the array.
             if (newArr.length > 2) {
                 newArr.pop()
                 newArr.shift()
             }
         }
+
+        // Adding the last two of the array and dividing it by two to get the median.
         return (newArr[0] + newArr[1]) / 2
     } else {
         for (let i = 0; i < newArr.length; i++) {
+
+            // If it's more than one it must be three because it's a odd array. Then we remove the last and first element to get the median.
             if (newArr.length > 1) {
                 newArr.pop()
                 newArr.shift()
             }
         }
+
+        // Returning the first (only) element of the array.
         return newArr[0]
     }
 }
@@ -181,15 +192,20 @@ function mode(numbers) {
     for (let i = 0; i < newArr.length; i++) {
         let count = 0
 
+        // Increment count everytime the element matches the other element the second for loop is going through.
         for (let d = 0; d < newArr.length; d++) {
             if (newArr[d] === newArr[i]) {
                 count++
             }
         }
+
+        // Push the elements into a array of objects.
         arrObj.push({n: newArr[i], c: count})
     }
 
     arrObj.sort((a, b) => a.c - b.c)
+
+    // Reverse the count sorting order to largest to smallest to easely get the largest object count number.
     arrObj.reverse()
 
     let largestCount = arrObj[0].c
@@ -197,6 +213,8 @@ function mode(numbers) {
 
     for (let i = 0; i < arrObj.length; i++) {
         if (largestCount === arrObj[i].c) {
+            
+            // Check if the value is not already included in the array and do a push (add) to the array otherwise.
             if (!results.includes(arrObj[i].n)) {
                 results.push(arrObj[i].n)
             }
