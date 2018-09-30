@@ -34,7 +34,7 @@ function descriptiveStatistics (numbers) {
  * Returns boolean value true if array contains other data types than Number in it.
  *
  * @param {number[]} numbers The array to check 
- * @returns {boolean} 
+ * @returns {boolean} True or false
  */
 function containsOtherDataTypes(numbers) {
     let newArr = [...numbers]
@@ -49,7 +49,8 @@ function containsOtherDataTypes(numbers) {
 
 
 /**
- * Throws Error/TypeError when one of the statements is not true.
+ * Checks the array and throws Error/TypeError when one
+ * of the statements is not true.
  *
  * @param {number[]} array The set of data to be analyzed.
  * @throws {TypeError} The passed argument is not an array.
@@ -70,7 +71,7 @@ function checkArray(array) {
 /**
  * Returns the maximum number of the array.
  *
- * @param {number[]} numbers
+ * @param {number[]} numbers The set of data to be analyzed.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
