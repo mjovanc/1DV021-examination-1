@@ -2,7 +2,7 @@
  * Module for obtaining descriptive information about a set of data.
  *
  * @author Marcus Cvjeticanin
- * @version 1.1.0
+ * @version 1.0
  */
 
 'use strict'
