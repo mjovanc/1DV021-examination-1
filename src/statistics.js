@@ -2,7 +2,7 @@
  * Module for obtaining descriptive information about a set of data.
  *
  * @author Marcus Cvjeticanin
- * @version 1.0
+ * @version 1.2
  */
 
 'use strict'
@@ -79,11 +79,8 @@ function checkArray(array) {
  */
 function maximum(numbers) {
     checkArray(numbers)
-
-    let newArr = [...numbers]
-    newArr.sort((a, b) => a - b)
-
-    return newArr[newArr.length-1]
+    
+    return Math.max(...numbers)
 }
 
 
@@ -158,10 +155,7 @@ function median(numbers) {
 function minimum(numbers) {
     checkArray(numbers)
 
-    let newArr = [...numbers]
-    newArr.sort((a, b) => a - b)
-
-    return newArr[0]
+    return Math.min(...numbers)
 }
 
 
@@ -222,9 +216,7 @@ function mode(numbers) {
 function range(numbers) {
     checkArray(numbers)
 
-    let newArr = [...numbers]
-
-    return maximum(newArr) - minimum(newArr)
+    return maximum([...numbers]) - minimum([...numbers])
 }
 
 
