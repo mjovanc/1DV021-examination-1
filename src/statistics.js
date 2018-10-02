@@ -50,7 +50,7 @@ function containsOtherDataTypes(numbers) {
 
 /**
  * Checks the array and throws Error/TypeError when one
- * of the statements is not true.
+ * of the statements is true.
  *
  * @param {number[]} array The set of data to be analyzed.
  * @throws {TypeError} The passed argument is not an array.
@@ -172,7 +172,7 @@ function minimum(numbers) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {Array<Number>} Array of results for the mode values.
+ * @returns {number[]} Returns array of results for the mode values.
  */
 function mode(numbers) {
     checkArray(numbers)
