@@ -29,7 +29,9 @@
   "engines": {
     "node": ">=0.12.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lint": "^1.1.2"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^5.2.0",

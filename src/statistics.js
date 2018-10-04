@@ -18,35 +18,34 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-    let stats = {
-        maximum: maximum(numbers),
-        mean: mean(numbers),
-        median: median(numbers),
-        minimum: minimum(numbers),
-        mode: mode(numbers),
-        range: range(numbers),
-        standardDeviation: standardDeviation(numbers),
-    }
-    return stats
+  let stats = {
+    maximum: maximum(numbers),
+    mean: mean(numbers),
+    median: median(numbers),
+    minimum: minimum(numbers),
+    mode: mode(numbers),
+    range: range(numbers),
+    standardDeviation: standardDeviation(numbers)
+  }
+  return stats
 }
 
 /**
  * Returns boolean value true if array contains other data types than Number in it.
  *
- * @param {number[]} numbers The array to check 
+ * @param {number[]} numbers The array to check
  * @returns {boolean} True or false
  */
-function containsOtherDataTypes(numbers) {
-    let newArr = [...numbers]
-    
-    for (let i = 0; i < newArr.length; i++) {
-        if (typeof newArr[i] != 'number') {
-            return true
-        }
-    }
-    return false
-}
+function containsOtherDataTypes (numbers) {
+  let newArr = [...numbers]
 
+  for (let i = 0; i < newArr.length; i++) {
+    if (typeof newArr[i] !== 'number') {
+      return true
+    }
+  }
+  return false
+}
 
 /**
  * Checks the array and throws Error/TypeError when one
@@ -57,16 +56,15 @@ function containsOtherDataTypes(numbers) {
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
  */
-function checkArray(array) {
-    if (!Array.isArray(array)) {
-        throw new TypeError('The passed argument is not an array.')
-    } else if (array.length < 1) {
-        throw new Error('The passed array contains no elements.')
-    } else if (containsOtherDataTypes(array)) {
-        throw new TypeError('The passed array contains not just numbers.')
-    }
+function checkArray (array) {
+  if (!Array.isArray(array)) {
+    throw new TypeError('The passed argument is not an array.')
+  } else if (array.length < 1) {
+    throw new Error('The passed array contains no elements.')
+  } else if (containsOtherDataTypes(array)) {
+    throw new TypeError('The passed array contains not just numbers.')
+  }
 }
-
 
 /**
  * Returns the maximum number of the array.
@@ -77,12 +75,11 @@ function checkArray(array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function maximum(numbers) {
-    checkArray(numbers)
-    
-    return Math.max(...numbers)
-}
+function maximum (numbers) {
+  checkArray(numbers)
 
+  return Math.max(...numbers)
+}
 
 /**
  * Returns the mean value of the array.
@@ -93,19 +90,18 @@ function maximum(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function mean(numbers) {
-    checkArray(numbers)
+function mean (numbers) {
+  checkArray(numbers)
 
-    let newArr = [...numbers]
-    let total = 0
+  let newArr = [...numbers]
+  let total = 0
 
-    for (let i = 0; i < newArr.length; i++) {
-        total += newArr[i]
-    }
-    
-    return total / newArr.length
+  for (let i = 0; i < newArr.length; i++) {
+    total += newArr[i]
+  }
+
+  return total / newArr.length
 }
-
 
 /**
  * Returns the median value of the array.
@@ -116,32 +112,30 @@ function mean(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function median(numbers) {
-    checkArray(numbers)
+function median (numbers) {
+  checkArray(numbers)
 
-    let newArr = [...numbers]
-    newArr.sort((a, b) => a - b)
+  let newArr = [...numbers]
+  newArr.sort((a, b) => a - b)
 
-    if (newArr.length % 2 === 0) {
-        for (let i = 0; i < newArr.length; i++) {
-            if (newArr.length > 2) {
-                newArr.pop()
-                newArr.shift()
-            }
-        }
-        return (newArr[0] + newArr[1]) / 2
-    } else {
-        for (let i = 0; i < newArr.length; i++) {
-
-            if (newArr.length > 1) {
-                newArr.pop()
-                newArr.shift()
-            }
-        }
-        return newArr[0]
+  if (newArr.length % 2 === 0) {
+    for (let i = 0; i < newArr.length; i++) {
+      if (newArr.length > 2) {
+        newArr.pop()
+        newArr.shift()
+      }
     }
+    return (newArr[0] + newArr[1]) / 2
+  } else {
+    for (let i = 0; i < newArr.length; i++) {
+      if (newArr.length > 1) {
+        newArr.pop()
+        newArr.shift()
+      }
+    }
+    return newArr[0]
+  }
 }
-
 
 /**
  * Returns the minimum value of the array.
@@ -152,12 +146,11 @@ function median(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function minimum(numbers) {
-    checkArray(numbers)
+function minimum (numbers) {
+  checkArray(numbers)
 
-    return Math.min(...numbers)
+  return Math.min(...numbers)
 }
-
 
 /**
  * Returns the mode value(s) of the array.
@@ -168,41 +161,40 @@ function minimum(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number[]} Returns array of results for the mode values.
  */
-function mode(numbers) {
-    checkArray(numbers)
+function mode (numbers) {
+  checkArray(numbers)
 
-    let newArr = [...numbers]
-    let arrObj = []
+  let newArr = [...numbers]
+  let arrObj = []
 
-    for (let i = 0; i < newArr.length; i++) {
-        let count = 0
+  for (let i = 0; i < newArr.length; i++) {
+    let count = 0
 
-        for (let d = 0; d < newArr.length; d++) {
-            if (newArr[d] === newArr[i]) {
-                count++
-            }
-        }
-
-        arrObj.push({n: newArr[i], c: count})
+    for (let d = 0; d < newArr.length; d++) {
+      if (newArr[d] === newArr[i]) {
+        count++
+      }
     }
 
-    arrObj.sort((a, b) => a.c - b.c)
-    arrObj.reverse()
+    arrObj.push({ n: newArr[i], c: count })
+  }
 
-    let largestCount = arrObj[0].c
-    let results = []
+  arrObj.sort((a, b) => a.c - b.c)
+  arrObj.reverse()
 
-    for (let i = 0; i < arrObj.length; i++) {
-        if (largestCount === arrObj[i].c) {
-            if (!results.includes(arrObj[i].n)) {
-                results.push(arrObj[i].n)
-            }
-        }
+  let largestCount = arrObj[0].c
+  let results = []
+
+  for (let i = 0; i < arrObj.length; i++) {
+    if (largestCount === arrObj[i].c) {
+      if (!results.includes(arrObj[i].n)) {
+        results.push(arrObj[i].n)
+      }
     }
-    
-    return results.sort((a, b) => a - b)
+  }
+
+  return results.sort((a, b) => a - b)
 }
-
 
 /**
  * Returns the range value of the array. Subtracts the maximum with the minimum.
@@ -213,12 +205,11 @@ function mode(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function range(numbers) {
-    checkArray(numbers)
+function range (numbers) {
+  checkArray(numbers)
 
-    return maximum([...numbers]) - minimum([...numbers])
+  return maximum([...numbers]) - minimum([...numbers])
 }
-
 
 /**
  * Returns the standard deviation value of the array.
@@ -229,19 +220,18 @@ function range(numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number}
  */
-function standardDeviation(numbers) {
-    checkArray(numbers)
-    
-    let newArr = [...numbers]
-    let total = 0
+function standardDeviation (numbers) {
+  checkArray(numbers)
 
-    for (let i = 0; i < newArr.length; i++) {
-        total += Math.pow(newArr[i] - mean(newArr), 2)
-    }
+  let newArr = [...numbers]
+  let total = 0
 
-    return Math.sqrt(total / newArr.length)
+  for (let i = 0; i < newArr.length; i++) {
+    total += Math.pow(newArr[i] - mean(newArr), 2)
+  }
+
+  return Math.sqrt(total / newArr.length)
 }
-
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
